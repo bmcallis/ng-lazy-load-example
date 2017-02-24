@@ -42,6 +42,10 @@
                         },
                     },
                     {
+                        test: /\.svg$/,
+                        loader: 'file-loader',
+                    },
+                    {
                         test: /\.css$/,
                         use: ['style-loader', 'css-loader'],
                     },

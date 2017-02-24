@@ -1,4 +1,22 @@
-.c-myHeader {
+.c-header {
     background-color: black;
     color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .c-header-title {
+        flex-grow: 1;
+        padding-left: 1em;
+    }
+
+    .c-header-icon {
+        line-height: 0;
+        padding: 0.25em;
+        cursor: pointer;
+
+        img {
+            height: 25px;
+        }
+    }
 }

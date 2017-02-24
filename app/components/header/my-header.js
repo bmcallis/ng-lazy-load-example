@@ -7,9 +7,11 @@ export default ngModule => {
             template: require('./my-header.html'),
             scope: {},
             controllerAs: 'ctrl',
-            controller: function() {
+            controller: function(help) {
                 const ctrl = this;
                 ctrl.title = 'My App';
+
+                ctrl.showHelp = help.showHelpDialog;
             }
         }
     });

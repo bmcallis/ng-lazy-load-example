@@ -14,7 +14,8 @@
     "angular": "1.6.2",
     "babel-polyfill": "6.23.0",
     "jquery": "3.1.1",
-    "leaflet": "1.0.3"
+    "leaflet": "1.0.3",
+    "ng-dialog": "1.0.0"
   },
   "devDependencies": {
     "babel": "^6.23.0",
@@ -32,6 +33,7 @@
     "sass-loader": "^6.0.2",
     "serve": "^3.4.1",
     "style-loader": "^0.13.1",
+    "svg-inline-loader": "^0.7.1",
     "url-loader": "^0.5.7",
     "webpack": "^2.2.1",
     "webpack-bundle-analyzer": "^2.3.0",
