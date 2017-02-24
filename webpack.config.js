@@ -7,7 +7,7 @@
     // const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
     module.exports = (env={config: 'dev'}) => {
-        const {ifProd} = getIfUtils(env);
+        const {ifProd, ifOpen} = getIfUtils(env, ['prod', 'open']);
 
         const OUT_DIR = resolve('./build');
         const config = {
@@ -33,6 +33,17 @@
                     {
                         test: /\.html$/,
                         loader: 'html-loader',
+                    },
+                    {
+                        test: /\.png$/,
+                        loader: 'url-loader',
+                        options: {
+                            mimetype: 'image/png',
+                        },
+                    },
+                    {
+                        test: /\.css$/,
+                        use: ['style-loader', 'css-loader'],
                     },
                     {
                         test: /\.scss$/,
@@ -64,17 +75,17 @@
                     filename: 'index.html',
                     template: './app/index.ejs',
                 }),
-                // new webpack.optimize.CommonsChunkPlugin({
-                //     name: 'node-static',
-                //     filename: 'node-static.js',
-                //     minChunks(module, count) {
-                //         const context = module.context;
-                //         return context && context.indexOf('node_modules') >= 0;
-                //     },
-                // }),
+                new webpack.optimize.CommonsChunkPlugin({
+                    name: 'node-static',
+                    filename: 'node-static.js',
+                    minChunks(module, count) {
+                        const context = module.context;
+                        return context && context.indexOf('node_modules') >= 0;
+                    },
+                }),
                 new BundleAnalyzerPlugin({
                     analyzerMode: 'static',
-                    openAnalyzer: false,
+                    openAnalyzer: ifOpen(),
                 }),
             ]),
             // stats control what's displayed to the console when webpack runs - https://webpack.js.org/configuration/stats/

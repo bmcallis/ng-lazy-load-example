@@ -3,3 +3,4 @@ const ngModule = angular.module('app', []);
 
 require('./main.scss');
 require('./components/header')(ngModule);
+require('./components/map')(ngModule);
